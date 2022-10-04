@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+
+    <title>Add</title>
+</head>
+
+<body>
+    <h2>Add data</h2>
+
+    <form id="str" action="" method="post">
+        <div class="input-group">
+            <input name="string" type="text" id="string" class="input" required>
+            <label for="string" class="input-label">String</label>
+        </div>
+
+        <div class="input-group">
+            <input name="integer" type="number" id="number" class="input" required>
+            <label for="number" class="input-label">Integer</label>
+        </div>
+
+        <div class="input-group">
+            <input name="float" type="number" step="any" id="float" class="input" required>
+            <label for="float" class="input-label">Float</label>
+        </div>
+
+        <div class="input-group">
+            <p>Date</p>
+            <input name="date" type="date" id="date" class="input">
+        </div>
+
+        <div class="input-group">
+            <p>Boolean</p>
+            <select name="boolean" value="" id="" class="input" required>
+                <option value="" selected disabled>-- Choose Boolean --</option>
+                <option value="true">True</option>
+                <option value="false">False</option>
+            </select>
+        </div>
+
+        <div>
+            <form action="" method="post">
+                <br>
+                <button type="submit" id="SaveButton">Save</button>
+            </form>
+            <a href="/" id="BackButton">Back</a>
+        </div>
+    </form>
+</body>
+
+</html>
