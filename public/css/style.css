@@ -148,6 +148,16 @@ h2 {
     width: 100%;
 }
 
+#search-button {
+    background: #0284C7;
+    padding: 6px 30px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #f2f2f2;
+    border-radius: 0.5rem;
+    font-size: medium;
+    text-decoration: none;
+}
+
 .space-8 {
     margin-left: 2rem;
 }
@@ -157,13 +167,33 @@ h2 {
     margin-top: 1rem;
 }
 
-/* SEARCH CSS */
-#search-button {
-    background: #0284C7;
-    padding: 6px 30px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: #f2f2f2;
-    border-radius: 0.5rem;
-    font-size: medium;
-    text-decoration: none;
+#Id {
+    margin-left: 3rem;
+    width: auto;
+}
+
+#String {
+    margin-left: 1.1rem;
+    width: auto;
+}
+
+#Integer {
+    margin-left: 0.6rem;
+    width: auto;
+}
+
+#Float {
+    width: auto;
+    margin-left: 1.7rem;
+    width: auto;
+}
+
+#Date {
+    margin-left: 4rem;
+    width: auto;
+}
+
+#Bool {
+    margin-left: 2.2rem;
+    width: auto;
 }

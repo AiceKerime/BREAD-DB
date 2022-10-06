@@ -32,7 +32,7 @@
                 <% data.forEach((item, index)=> { %>
                     <tr>
                         <td>
-                            <%= index + 1 %>
+                            <%= item.id %>
                         </td>
                         <td>
                             <%= item.string %>
@@ -47,11 +47,11 @@
                             <%= item.date %>
                         </td>
                         <td>
-                            <%= item.boolean %>
+                            <%= item.boolean==1 ? 'true' : 'false' %>
                         </td>
                         <td>
-                            <a href="/edit/<%= index %>" class="edit">Edit</a>
-                            <a href="/delete/<%= index %>" class="delete">Delete</a>
+                            <a href="/edit/<%= item.id %>" class="edit">Edit</a>
+                            <a href="/delete/<%= item.id %>" class="delete">Delete</a>
                         </td>
                     </tr>
                     <% }) %>
