@@ -1,6 +1,9 @@
-// const fs = require('fs')
-const path = require('path')
+// MOMENT & EXPRESS PACKAGE
+const moment = require('moment')
 const express = require('express')
+
+// PATH, BODYPARSER & SQLITE3 PACKAGE
+const path = require('path')
 const bodyParser = require('body-parser')
 const sqlite3 = require('sqlite3').verbose()
 
@@ -35,7 +38,7 @@ app.get('/', (req, res) => {
     if (err) {
       console.log('Failed to get data')
     }
-    res.render('index', { data })
+    res.render('index', { data, moment })
   })
 })
 
