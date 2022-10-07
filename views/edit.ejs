@@ -20,7 +20,7 @@
             <input name="id" type="string" id="id" class="input" value="<%= item.id %>" disabled>
         </div>
         <div class="input-group">
-            <input type="text" id="string" class="input" value="<%= item.string %>" required>
+            <input name="string" type="text" id="string" class="input" value="<%= item.string %>" required>
             <label for="string" class="input-label">String</label>
         </div>
 
@@ -43,15 +43,15 @@
             <p>Boolean</p>
             <select name="boolean" value="" id="boolean" class="input" value="<%= item.boolean %>" required>
                 <option value="" selected disabled>-- Choose Boolean --</option>
-                <option value="true" <%=item.boolean==1 ? 'true' : 'false' %>>True</option>
-                <option value="false" <%=item.boolean==0 ? 'true' : 'false' %>>False</option>
+                <option value=true <%=item.boolean==1 ? 'selected' : '' %>>True</option>
+                <option value=false <%=item.boolean==0 ? 'selected' : '' %>>False</option>
             </select>
         </div>
 
         <div>
             <form action="" method="post">
                 <br>
-                <input type="submit" id="SaveButton" value="Update">
+                <button type="submit" id="SaveButton">Update</button>
             </form>
             <a href="/" id="BackButton">Back</a>
         </div>
