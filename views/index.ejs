@@ -18,6 +18,7 @@
         <table id="tables">
             <thead>
                 <tr>
+                    <th>No</th>
                     <th>ID</th>
                     <th>String</th>
                     <th>Integer</th>
@@ -31,6 +32,9 @@
             <tbody>
                 <% data.forEach((item, index)=> { %>
                     <tr>
+                        <td>
+                            <%= index + 1 %>
+                        </td>
                         <td>
                             <%= item.id %>
                         </td>

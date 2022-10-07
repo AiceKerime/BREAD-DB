@@ -1,4 +1,4 @@
-const fs = require('fs')
+// const fs = require('fs')
 const path = require('path')
 const express = require('express')
 const bodyParser = require('body-parser')
@@ -6,6 +6,7 @@ const sqlite3 = require('sqlite3').verbose()
 
 // const dataPath = './json/data.json'
 // const data = JSON.parse(fs.readFileSync(dataPath, 'utf-8'))
+
 const dbFile = './database/data.db'
 const db = new sqlite3.Database(dbFile, sqlite3.OPEN_READWRITE, (err) => {
   if (err) { console.log(`Failed to connect to database`, err) };
@@ -43,8 +44,12 @@ app.get('/edit', (req, res) => {
 })
 
 app.get('/edit/:id', (req, res) => {
-  const id = req.params.id
-  res.render('edit', { item: data[id] })
+  db.all('SELECT * FROM bread WHERE id = ?', [req.params.id], (err, data) => {
+    if (err) {
+      console.log('Failed to get data to edit', err)
+    }
+    res.render('edit', { item: data[0] })
+  })
 })
 
 app.get('/delete/:id', (req, res) => {
@@ -59,7 +64,7 @@ app.get('/delete/:id', (req, res) => {
 
 // POST
 app.post('/add', (req, res) => {
-  db.run('INSERT INTO bread (string, integer, float, date, boolean) VALUES (?, ?, ?, ?, ?)', [req.body.string, parseInt(req.body.integer), parseFloat(req.body.float), req.body.date, JSON.parse(req.body.boolean)], (err, data) => {
+  db.run('INSERT INTO bread (string, integer, float, date, boolean) VALUES (?, ?, ?, ?, ?)', [req.body.string, parseInt(req.body.integer), parseFloat(req.body.float), req.body.date, JSON.parse(req.body.boolean)], (err) => {
     if (err) {
       console.log('Failed to add data')
     }
@@ -68,10 +73,12 @@ app.post('/add', (req, res) => {
 })
 
 app.post('/edit/:id', (req, res) => {
-  const id = req.params.id
-  data[id] = { string: req.body.string, integer: parseInt(req.body.integer), float: parseFloat(req.body.float), date: req.body.date, boolean: JSON.parse(req.body.boolean) }
-  fs.writeFileSync(dataPath, JSON.stringify(data, null, 3))
-  res.redirect('/')
+  db.all('UPDATE FROM bread SET string = ?, integer = ?, float = ?, date = ?, boolean = ? WHERE id = ?', [req.body.string, parseInt(req.body.integer), parseFloat(req.body.float), req.body.date, JSON.parse(req.body.boolean), req.body.id], (err, data) => {
+    if (err) {
+      console.log('Failed to update data')
+    }
+    res.render('edit', { item: data })
+  })
 })
 
 

@@ -16,12 +16,16 @@
 
     <form id="str" action="" method="post">
         <div class="input-group">
-            <input name="string" type="text" id="string" class="input" value="<%= item.string %>" required>
-            <label for="name" class="input-label">String</label>
+            <p>ID</p>
+            <input name="id" type="string" id="id" class="input" value="<%= item.id %>" disabled>
+        </div>
+        <div class="input-group">
+            <input type="text" id="string" class="input" value="<%= item.string %>" required>
+            <label for="string" class="input-label">String</label>
         </div>
 
         <div class="input-group">
-            <input name="integer" type="number" id="number" class="input" value="<%= item.integer %>" required>
+            <input name="integer" type="number" id="integer" class="input" value="<%= item.integer %>" required>
             <label for="number" class="input-label">Integer</label>
         </div>
 
@@ -37,19 +41,19 @@
 
         <div class="input-group">
             <p>Boolean</p>
-            <select name="boolean" value="" id="" class="input" required>
+            <select name="boolean" value="" id="boolean" class="input" value="<%= item.boolean %>" required>
                 <option value="" selected disabled>-- Choose Boolean --</option>
-                <option value="true">True</option>
-                <option value="false">False</option>
+                <option value="true" <%=item.boolean==1 ? 'true' : 'false' %>>True</option>
+                <option value="false" <%=item.boolean==0 ? 'true' : 'false' %>>False</option>
             </select>
         </div>
 
         <div>
             <form action="" method="post">
                 <br>
-                <button type="submit" id="SaveButton">Update</button>
-                <a href="/" id="BackButton">Back</a>
+                <input type="submit" id="SaveButton" value="Update">
             </form>
+            <a href="/" id="BackButton">Back</a>
         </div>
     </form>
     <br>
