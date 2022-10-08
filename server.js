@@ -10,7 +10,7 @@ const sqlite3 = require('sqlite3').verbose()
 // const dataPath = './json/data.json'
 // const data = JSON.parse(fs.readFileSync(dataPath, 'utf-8'))
 
-// DATABASE CONNECTING
+// DATABASE CONNECTION
 const dbFile = './database/data.db'
 const db = new sqlite3.Database(dbFile, sqlite3.OPEN_READWRITE, (err) => {
   if (err) { console.log(`Failed to connect to database`, err) };
@@ -20,11 +20,11 @@ const db = new sqlite3.Database(dbFile, sqlite3.OPEN_READWRITE, (err) => {
 const app = express()
 const port = 3000
 
-// USE
+// USE EXPRESS
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(path.join(__dirname, 'public')))
 
-// BODYPARSER
+// USE BODYPARSER
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
@@ -34,11 +34,50 @@ app.set('view engine', 'ejs')
 
 // GET
 app.get('/', (req, res) => {
-  db.all('SELECT * FROM bread', (err, data) => {
+  const page = req.query.page || 1
+  const limit = 3;
+  const offset = (page - 1) * limit
+  const url = req.url == '/' ? '/?page=1' : req.url
+
+  const posisi = []
+  const values = []
+
+  db.all('SELECT * FROM bread', (err, total) => {
     if (err) {
       console.log('Failed to get data')
     }
-    res.render('index', { data, moment })
+
+    console.log(url)
+
+    if (req.query.id && req.query.idCheck == 'on') {
+      posisi.push(`id = ?`)
+      values.push(req.query.id)
+    }
+
+    let sql = 'SELECT COUNT(*) AS total FROM bread';
+    if (posisi.length > 0) {
+      sql += ` WHERE ${posisi.join(' AND ')}`
+    }
+
+    db.all(sql, values, (err, data) => {
+      if (err) {
+        console.error(err);
+      }
+      const pages = Math.ceil(data[0].total / limit)
+
+      sql = 'SELECT * FROM bread'
+      if (posisi.length > 0) {
+        sql += ` WHERE ${posisi.join(' AND ')}`
+      }
+      sql += ' LIMIT ? OFFSET ?';
+
+      db.all(sql, [...values, limit, offset], (err, data) => {
+        if (err) {
+          console.error(err);
+        }
+        res.render('index', { data, moment, pages, page, query: req.query, url, total })
+      })
+    })
   })
 })
 

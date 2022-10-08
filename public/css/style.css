@@ -7,9 +7,12 @@ h2 {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-/* #id {
 
-} */
+#title {
+    font-size: 2rem;
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
 
 .flex-container {
     display: flex;
@@ -18,7 +21,7 @@ h2 {
     justify-items: left;
 }
 
-/* INDEX CSS */
+/* INDEX CSS START */
 #tables {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
@@ -51,30 +54,76 @@ h2 {
     background-color: #04AA6D;
     color: #f2f2f2;
     padding: 4px 10px;
-    border-radius: 5px;
+    border-radius: 4px;
     text-decoration: none;
+}
+
+.edit:hover {
+    background-color: #006e46;
 }
 
 .delete {
     background-color: #BE123C;
     color: #f2f2f2;
     padding: 4px 10px;
-    border-radius: 5px;
+    border-radius: 4px;
     text-decoration: none;
+}
+
+.delete:hover {
+    background-color: #740000;
 }
 
 .add {
     background-color: #0284C7;
     color: #f2f2f2;
-    padding: 6px 30px;
+    padding: 10px 30px;
     border-radius: 5px;
     text-decoration: none;
     font-style: bold;
 }
 
+.add:hover {
+    background-color: #00a0f0;
+}
 
+.space-x {
+    justify-content: space-between;
+}
 
-/* ADD CSS */
+/* INDEX CSS END */
+
+/* PAGINATION CSS START */
+.pagination {
+    background: #94a3b8;
+    border-radius: 0.6rem;
+    display: inline-block;
+    border: 2px solid #000;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.pagination a {
+    color: #CBD5E1;
+    float: left;
+    padding: 8px 14px;
+    text-decoration: none;
+}
+
+.pagination a.active {
+    background: #475569;
+    color: #f5f5f5;
+    border-radius: 0.5rem;
+}
+
+.pagination a:hover:not(.active) {
+    background: #3c6cae;
+    color: #f5f5f5;
+    border-radius: 0.5rem;
+}
+
+/* PAGINATION CSS END */
+
+/* ADD CSS START */
 .input-group {
     position: relative;
     margin: 1.5rem 0;
@@ -123,6 +172,11 @@ h2 {
     border-radius: 0.5rem;
     font-size: medium;
     text-decoration: none;
+    cursor: pointer;
+}
+
+#SaveButton:hover {
+    background: #00a0f0;
 }
 
 #BackButton {
@@ -135,8 +189,13 @@ h2 {
     text-decoration: none;
 }
 
-/* SEARCH CSS */
+#BackButton:hover {
+    background: #740000;
+}
 
+/* ADD CSS END */
+
+/* SEARCH CSS START */
 .input-search {
     padding: 10px;
     border: none;
@@ -156,8 +215,16 @@ h2 {
     border-radius: 0.5rem;
     font-size: medium;
     text-decoration: none;
+    cursor: pointer;
 }
 
+#search-button:hover {
+    background-color: #00a0f0;
+}
+
+/* SEARCH CSS END */
+
+/* INPUT CSS START */
 .space-8 {
     margin-left: 2rem;
 }
@@ -197,3 +264,5 @@ h2 {
     margin-left: 2.2rem;
     width: auto;
 }
+
+/* INPUT CSS END */
