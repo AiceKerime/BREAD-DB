@@ -16,74 +16,77 @@
     <hr width="50%">
     <%- include ('search.ejs') %>
 
-        <table id="tables">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>ID</th>
-                    <th>String</th>
-                    <th>Integer</th>
-                    <th>Float</th>
-                    <th>Date</th>
-                    <th>Boolean</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <% data.forEach((item, index)=> { %>
+        <div class="card p-8">
+            <table id="tables">
+                <thead>
                     <tr>
-                        <td>
-                            <%= index + 1 %>
-                        </td>
-                        <td>
-                            <%= item.id %>
-                        </td>
-                        <td>
-                            <%= item.string %>
-                        </td>
-                        <td>
-                            <%= item.integer %>
-                        </td>
-                        <td>
-                            <%= item.float %>
-                        </td>
-                        <td>
-                            <%= item.date==null ? 'kosong' : moment(item.date).format('DD MMMM YYYY')%>
-                        </td>
-                        <td>
-                            <%= item.boolean==1 ? 'true' : 'false' %>
-                        </td>
-                        <td>
-                            <a href="/edit/<%= item.id %>" class="edit">Edit</a>
-                            <a href="/delete/<%= item.id %>"
-                                onclick="return confirm('Are you sure you want to delete this data?')"
-                                class="delete">Delete</a>
-                        </td>
+                        <th>No</th>
+                        <th>ID</th>
+                        <th>String</th>
+                        <th>Integer</th>
+                        <th>Float</th>
+                        <th>Date</th>
+                        <th>Boolean</th>
+                        <th>Actions</th>
                     </tr>
-                    <% }) %>
-            </tbody>
-        </table>
-        <br>
-        <div class="flex-container space-x">
-            <div>
-                <a class="add" href="/add">Add</a>
-            </div>
-            <div class=" pagination">
-                <%if (page !=1){%>
-                    <a href="<%=url.replace(`page=${page}`, `page=${parseInt(page)-1}`)%>">&laquo;</a>
-                    <%}%>
+                </thead>
 
-                        <%for (let i=1; i <=pages; i++) { %>
-                            <a class="<%= i == page ? 'active' : ''%>"
-                                href="<%=url.replace(`page=${page}`, `page=${i}`)%>">
-                                <%= i %>
-                            </a>
-                            <% } %>
+                <tbody>
+                    <% data.forEach((item, index)=> { %>
+                        <tr>
+                            <td>
+                                <%= index + 1 %>
+                            </td>
+                            <td>
+                                <%= item.id %>
+                            </td>
+                            <td>
+                                <%= item.string %>
+                            </td>
+                            <td>
+                                <%= item.integer %>
+                            </td>
+                            <td>
+                                <%= item.float %>
+                            </td>
+                            <td>
+                                <%= item.date==null ? 'kosong' : moment(item.date).format('DD MMMM YYYY')%>
+                            </td>
+                            <td>
+                                <%= item.boolean==1 ? 'true' : 'false' %>
+                            </td>
+                            <td>
+                                <a href="/edit/<%= item.id %>" class="edit">Edit</a>
+                                <a href="/delete/<%= item.id %>"
+                                    onclick="return confirm('Are you sure you want to delete this data?')"
+                                    class="delete">Delete</a>
+                            </td>
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
+            <br>
+            <div class="flex-container space-x">
+                <div>
+                    <a class="add" href="/add">Add</a>
+                </div>
+                <div class=" pagination">
+                    <%if (page !=1){%>
+                        <a href="<%=url.replace(`page=${page}`, `page=${parseInt(page)-1}`)%>">&laquo;</a>
+                        <%}%>
 
-                                <% if (page <=pages && page !=pages) { %>
-                                    <a href="<%=url.replace(`page=${page}`, `page=${parseInt(page)+1}`)%>">&raquo;</a>
-                                    <% } %>
+                            <%for (let i=1; i <=pages; i++) { %>
+                                <a class="<%= i == page ? 'active' : ''%>"
+                                    href="<%=url.replace(`page=${page}`, `page=${i}`)%>">
+                                    <%= i %>
+                                </a>
+                                <% } %>
+
+                                    <% if (page <=pages && page !=pages) { %>
+                                        <a
+                                            href="<%=url.replace(`page=${page}`, `page=${parseInt(page)+1}`)%>">&raquo;</a>
+                                        <% } %>
+                </div>
             </div>
         </div>
 </body>

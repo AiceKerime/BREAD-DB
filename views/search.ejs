@@ -1,7 +1,7 @@
-<h2>Filter</h2>
+<div class="container card">
+    <h2>Filters</h2>
 
-<form>
-    <div>
+    <form action="" method="get">
         <div class="flex-container">
             <label class=" ">
                 <input id="checkbox" type="checkbox" <%=query.idCheck ? 'checked' : '' %>>ID
@@ -10,10 +10,8 @@
                 <input id="Id" class="input-search" type="text" placeholder="Id" value="<%= query.id %>">
             </div>
         </div>
-    </div>
-    <br>
+        <br>
 
-    <div>
         <div class="flex-container">
             <input id="checkbox" type="checkbox" <%=query.stringCheck ? 'checked' : '' %>>
             <label class=" ">String</label>
@@ -21,10 +19,9 @@
                 <input id="String" class="input-search" type="text" placeholder="String" value="<%= query.string %>">
             </div>
         </div>
-    </div>
-    <br>
 
-    <div>
+        <br>
+
         <div class="flex-container">
             <input id="checkbox" type="checkbox" <%=query.integerCheck ? 'checked' : '' %>>
             <label class="">Integer</label>
@@ -33,10 +30,8 @@
                     value="<%= query.integer %>">
             </div>
         </div>
-    </div>
-    <br>
+        <br>
 
-    <div>
         <div class="flex-container">
             <input id="checkbox" type="checkbox" <%=query.floatCheck ? 'checked' : '' %>>
             <label class="">Float</label>
@@ -45,22 +40,19 @@
                     value="<%= query.float %>">
             </div>
         </div>
-    </div>
-    <br>
+        <br>
 
-    <div>
         <div class="flex-container">
             <input id="checkbox" type="checkbox" <%=query.dateCheck ? 'checked' : '' %>>
             <label class="">Date</label>
             <div id="Date" class="space-8">
-                <input class="input-search date-input" type="date" placeholder="Date" <%=query.startDate %>> <br>to<br>
+                <input class="input-search date-input" type="date" placeholder="Date" <%=query.startDate %>>
+                <br>to<br>
                 <input class="input-search date-input" type="date" placeholder="Date" <%=query.endDate %>>
             </div>
         </div>
-    </div>
-    <br>
+        <br>
 
-    <div>
         <div class="flex-container">
             <input id="checkbox" type="checkbox" <%=query.booleanCheck ? 'checked' : '' %>>
             <label class="">Boolean</label>
@@ -72,12 +64,12 @@
                 </select>
             </div>
         </div>
-    </div>
-    <br>
+        <br>
 
-    <div>
-        <button id="search-button">Search</button>
-    </div>
-    <br>
-    <br>
-</form>
+        <div>
+            <button type="submit" id="search-button">Search</button>
+            <button type="reset" id="reset-button">Reset</button>
+        </div>
+        <br>
+    </form>
+</div>

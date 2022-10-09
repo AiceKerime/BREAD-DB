@@ -49,10 +49,10 @@ app.get('/', (req, res) => {
 
     console.log(url)
 
-    if (req.query.id && req.query.idCheck == 'on') {
-      posisi.push(`id = ?`)
-      values.push(req.query.id)
-    }
+    // if (req.query.id && req.query.idCheck == 'on') {
+    //   posisi.push(`id = ?`)
+    //   values.push(req.query.id)
+    // }
 
     let sql = 'SELECT COUNT(*) AS total FROM bread';
     if (posisi.length > 0) {
