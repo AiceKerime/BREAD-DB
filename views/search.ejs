@@ -71,16 +71,12 @@
             <div id="Boolean" class="space-8">
                 <select class="input" name="boolean">
                     <option selected disabled>-- Choose Boolean --</option>
-                    <option value=true name="boolean">True</option>
-                    <option value=false name="boolean">False</option>
+                    <option value=1 <%=query.boolean==1 ? 'selected' : '' %> name="boolean">True</option>
+                    <option value=0 <%=query.boolean==0 ? 'selected' : '' %> name="boolean">False</option>
                 </select>
             </div>
         </div>
         <br>
-        <h2>Result</h2>
-        <h3>Total Ada <%= total.length %> Data di Database</h3>
-        <br>
-
         <div>
             <input type="submit" id="search-button" value="Search">
             <a href="/" type="reset" id="reset-button">Reset</a>
