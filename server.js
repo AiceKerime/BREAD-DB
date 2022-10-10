@@ -34,8 +34,8 @@ app.set('view engine', 'ejs')
 
 // GET
 app.get('/', (req, res) => {
-  const page = req.query.page || 1
   const limit = 3;
+  const page = req.query.page || 1
   const offset = (page - 1) * limit
   const url = req.url == '/' ? '/?page=1' : req.url
 
@@ -46,18 +46,54 @@ app.get('/', (req, res) => {
     if (err) {
       console.log('Failed to get data')
     }
-
     console.log(url)
 
-    // if (req.query.id && req.query.idCheck == 'on') {
-    //   posisi.push(`id = ?`)
-    //   values.push(req.query.id)
-    // }
+    if (req.query.id && req.query.idCheck == 'on') {
+      posisi.push(`id = ?`);
+      values.push(req.query.id);
+    }
+
+    if (req.query.string && req.query.stringCheck == 'on') {
+      posisi.push(`string like '%' || ? || '%'`);
+      values.push(req.query.string);
+    }
+
+    if (req.query.integer && req.query.integerCheck == 'on') {
+      posisi.push(`integer like '%' || ? || '%'`);
+      values.push(req.query.integer);
+    }
+
+    if (req.query.float && req.query.floatCheck == 'on') {
+      posisi.push(`float like '%' || ? || '%'`);
+      values.push(req.query.float);
+    }
+    //
+    if (req.query.dateCheck == 'on') {
+      if (req.query.startDate != '' && req.query.endDate != '') {
+        posisi.push('date BETWEEN ? AND ?')
+        values.push(req.query.startDate);
+        values.push(req.query.endDate);
+      }
+      else if (req.query.startDate) {
+        posisi.push('date > ?')
+        values.push(req.query.startDate);
+      }
+      else if (req.query.endDate) {
+        posisi.push('date < ?')
+        values.push(req.query.endDate);
+      }
+    }
+    //
+    if (req.query.boolean && req.query.booleanCheck == 'on') {
+      posisi.push(`boolean = ?`);
+      values.push(req.query.boolean);
+    }
 
     let sql = 'SELECT COUNT(*) AS total FROM bread';
     if (posisi.length > 0) {
       sql += ` WHERE ${posisi.join(' AND ')}`
     }
+    console.log(sql)
 
     db.all(sql, values, (err, data) => {
       if (err) {

@@ -1,0 +1,40 @@
+if (req.query.id && req.query.idCheck == 'on') {
+      posisi.push(`id = ?`);
+      values.push(req.query.id);
+    }
+
+    if (req.query.string && req.query.stringCheck == 'on') {
+      posisi.push(`string like '%' || ? || '%'`);
+      values.push(req.query.string);
+    }
+
+    if (req.query.integer && req.query.integerCheck == 'on') {
+      posisi.push(`integer like '%' || ? || '%'`);
+      values.push(req.query.integer);
+    }
+
+    if (req.query.float && req.query.floatCheck == 'on') {
+      posisi.push(`float like '%' || ? || '%'`);
+      values.push(req.query.float);
+    }
+    //
+    if (req.query.dateCheck == 'on') {
+      if (req.query.startDate != '' && req.query.endDate != '') {
+        posisi.push('date BETWEEN ? AND ?')
+        values.push(req.query.startDate);
+        values.push(req.query.endDate);
+      }
+      else if (req.query.startDate) {
+        posisi.push('date > ?')
+        values.push(req.query.startDate);
+      }
+      else if (req.query.endDate) {
+        posisi.push('date < ?')
+        values.push(req.query.endDate);
+      }
+    }
+
+    let sql = 'SELECT COUNT(*) AS total FROM bread';
+    if (posisi.length > 0) {
+      sql += ` WHERE ${posisi.join(' AND ')}`
+    }

@@ -70,7 +70,7 @@
                 <div>
                     <a class="add" href="/add">Add</a>
                 </div>
-                <div class=" pagination">
+                <div class="pagination">
                     <%if (page !=1){%>
                         <a href="<%=url.replace(`page=${page}`, `page=${parseInt(page)-1}`)%>">&laquo;</a>
                         <%}%>
@@ -82,7 +82,7 @@
                                 </a>
                                 <% } %>
 
-                                    <% if (page <=pages && page !=pages) { %>
+                                    <%if (page <=pages && page !=pages) { %>
                                         <a
                                             href="<%=url.replace(`page=${page}`, `page=${parseInt(page)+1}`)%>">&raquo;</a>
                                         <% } %>
