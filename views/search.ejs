@@ -4,9 +4,8 @@
     <form action="" method="get">
         <input type="hidden" name="page" value="1">
         <div class="flex-container">
-            <input name="idCheck" type="checkbox" <%=query.idCheck ? 'checked' : '' %>>
             <label for="idCheck">
-                ID
+                <input name="idCheck" type="checkbox" <%=query.idCheck ? 'checked' : '' %>>ID
             </label>
             <div class="space-8">
                 <input id="Id" class="input-search" name="id" type="text" placeholder="Id" value="<%= query.id %>">
@@ -83,4 +82,3 @@
         </div>
     </form>
     <br>
-</div>
