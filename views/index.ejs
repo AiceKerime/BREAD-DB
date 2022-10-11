@@ -50,7 +50,7 @@
                                 <%= item.float %>
                             </td>
                             <td>
-                                <%= item.date==null ? 'kosong' : moment(item.date).format('DD MMMM YYYY')%>
+                                <%= item.date==0 ? 'kosong' : moment(item.date).format('DD MMMM YYYY')%>
                             </td>
                             <td>
                                 <%= item.boolean==1 ? 'true' : 'false' %>
