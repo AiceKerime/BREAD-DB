@@ -1,5 +1,5 @@
 {
-  "name": "bread-json",
+  "name": "bread-db",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",

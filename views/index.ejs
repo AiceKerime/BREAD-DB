@@ -14,8 +14,8 @@
 <body>
     <h2 id="title"><strong>BREAD (Browse, Read, Edit, Add, Delete)</strong></h2>
     <hr width="50%">
-    <%- include ('search.ejs') %>
 
+    <%- include('search') %>
         <div class="p-8">
             <table id="tables">
                 <thead>
@@ -73,7 +73,7 @@
                 <div class="pagination">
                     <%if (page !=1){%>
                         <a href="<%=url.replace(`page=${page}`, `page=${parseInt(page)-1}`)%>">&laquo;</a>
-                        <%}%>
+                        <% } %>
 
                             <%for (let i=1; i <=pages; i++) { %>
                                 <a class="<%= i == page ? 'active' : ''%>"

@@ -18,7 +18,7 @@ const db = new sqlite3.Database(dbFile, sqlite3.OPEN_READWRITE, (err) => {
 
 // EXPRESS & PORT
 const app = express()
-const port = 3000
+const port = 3008
 
 // USE EXPRESS
 app.use(express.static(__dirname + '/public'));
@@ -116,6 +116,7 @@ app.get('/', (req, res) => {
     })
   })
 })
+
 
 app.get('/add', (req, res) => {
   res.render('add')
